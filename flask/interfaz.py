@@ -38,7 +38,6 @@ def show_signup_form():
 		total_result = searcher.get_total_result()
 		rango = searcher.get_actual_interval()
 	
-	#TODO ponerlo dentro
 	inputs = checked_alertas(searcher.get_all_data())
 	aggs = checked_prin_act(searcher.get_aggs(), inputs)
 	return render_template("search.html", form=form, result=result, inputs=inputs, aggs=aggs, total_result=total_result, rango=rango)
@@ -68,6 +67,6 @@ def checked_prin_act(aggs, inputs):
 			if agg['key'] == pa:
 				agg['check'] = 'checked'
 	return aggs
-	
-if name == 'main':
-	app.run(host="0.0.0.0")
+
+if __name__ == '__main__':
+    app.run(host="0.0.0.0")
