@@ -72,7 +72,7 @@ Después de ejecutar esos comandos, dentro de la carpeta Elastic, se ejecutará 
 
 python3 createindex.py
 
-Una vez realizados todos esos comandos, ya se podrá utilizar la interfaz web entrando en \textbf{0.0.0.0:5000} en el navegador.
+Una vez realizados todos esos comandos, ya se podrá utilizar la interfaz web entrando en 0.0.0.0:5000 o 127.0.0.1:5000 en el navegador.
 
 Dependiendo de las versiones de Docker y de la máquina local, puede haber algunos errores a la hora de levantar los contenedores. Si es así, es necesario ejecutar el siguiente comando:
 
