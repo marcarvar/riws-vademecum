@@ -1,6 +1,6 @@
 # RIWS Mario y Alejo
 * Importante descomprimir vademecumJSON.zip este archivo contiene los JSON comprimidos por motivos de espacio en Git
-
+* Si no va docker leer Instalacion.txt
 
 RIWS/
     vademecum/

@@ -1,0 +1,25 @@
+- Descargar la imagen de Elastic
+
+docker pull docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+
+- Ejecutar el contenedor
+
+docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+
+- Desde la carpeta elastic
+
+pip3 install elasticsearch
+
+python3 createindex.py
+
+- Desde carpeta flask
+
+pip3 install flask
+
+- Establecer variable
+
+export FLASK_APP=interfaz
+
+- Arrancar flask
+
+flask run
