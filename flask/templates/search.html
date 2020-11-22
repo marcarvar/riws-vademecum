@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Poppins:700" rel="stylesheet" />
+	<link type="text/css" href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet" />
+	<link href="{{ url_for('static', filename='images/medicamentos.jpeg') }}" rel="stylesheet" />
+</head>
+
+<body>
+	<div class="s012">
+
+		<form action="" method="post">
+
+			<fieldset>
+				<legend>Buscar medicamentos</legend>
+			</fieldset>
+
+			<div style="float:left"><label for="name"><b>Nombre</b>:&nbsp; </label></div> &nbsp;&nbsp;&nbsp;&nbsp;
+			<div style="float:left"><input type="text" id="name" name="name" value="{{ inputs['name'] }}" /></div>
+
+			<!-- <label for="name"><b>Nombre</b>: </label>
+				<input type="text" id="name" name="name"/><br> -->
+
+			<label for="content"><b>Contenido:</b> </label>
+			<input type="text" id="content" name="content" value="{{ inputs['content'] }}" /><br></p>
+
+			<div style="float:left"><label for="efectos"><b>Efectos adversos</b>:&nbsp; </label></div>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<div style="float:left"><input type="text" id="efectos" name="efectos" value="{{ inputs['efect_adv'] }}" />
+			</div>
+
+
+			<label for="envases"><b>Envases:</b> </label>
+			<input type="text" id="envases" name="envases" value="{{ inputs['envases'] }}" /><br>
+			<br>
+			<br>
+
+			<input type="checkbox" id="cbox2" name="alertas_comp" value="Lactancia"
+				{% if inputs.alertas_comp[0] == "checked" %} checked {% endif %}>
+			<label for="cbox2"><b>Lactancia</b></label>&nbsp; &nbsp; &nbsp; &nbsp;
+			<input type="checkbox" id="cbox3" name="alertas_comp" value="Embarazo"
+				{% if inputs.alertas_comp[1] == "checked" %} checked {% endif %}>
+			<label for="cbox3"><b>Embarazo</b></label>&nbsp; &nbsp; &nbsp; &nbsp;
+			<input type="checkbox" id="cbox4" name="alertas_comp" value="Fotosensibilidad"
+				{% if inputs.alertas_comp[2] == "checked" %} checked {% endif %}>
+			<label for="cbox4"><b>Fotosensibilidad</b></label>&nbsp; &nbsp; &nbsp; &nbsp;
+			<input type="checkbox" id="cbox5" name="alertas_comp" value="Conducción de vehículos&sol;maquinaria"
+				{% if inputs.alertas_comp[3] == "checked" %} checked {% endif %}>
+			<label for="cbox5"><b>Conducción de vehículos/maquinaria</b></label>
+
+
+			<!--<input type="checkbox" name="alertas_composicion" value='Lactancia'> Lactancia
+				<input type="checkbox" name="alertas_composicion" value='Embarazo'>Embarazo
+				<input type="checkbox" name="alertas_composicion" value='Fotosensibilidad'>Fotosensibilidad
+				<input type="checkbox" name="alertas_composicion" value='Conducción de vehículos&sol;maquinaria'>Conducción de vehículos/maquinaria <br>
+				-->
+
+
+			<p><input type="submit" id="search" name="search" value="Buscar" />
+				<input type="submit" id="clean" name="search" value="Limpiar" /></p>
+
+			<br>
+			<p>
+				<hr style="border-color:orange;">
+			</p>
+			<br>
+
+
+			<p align="right"><input type="submit" id="left" name="search" value="Anterior" />
+				<input type="submit" id="right" name="search" value="Siguiente" /></p>
+
+			<div style="float:right">
+				&nbsp;&nbsp;&nbsp;<b>Resultados: {{ total_result }}</b>
+			</div>
+
+			<div style="float:right">
+				<b>Rango: {{rango[0]}} - {{rango[1]}}</b>
+			</div>
+
+
+			<br>
+			<br>
+			<table>
+				<tr>
+					<td>						
+							<p><b>Principio activo</b>&nbsp;&nbsp;<input type="submit" id="search" name="search"
+									value="Aplicar" /></p>
+							{% for elemento in aggs %}
+							<input type="checkbox" id="{{ elemento['key'] }}" name="prin_act"
+								value="{{ elemento['key'] }}" {% if elemento.check == "checked" %} checked {% endif %}>
+							<label for="{{ elemento['key'] }}"> {{ elemento['key'] }}
+								({{ elemento['doc_count'] }})</label><br>
+							<br>
+							{% endfor %}
+						
+					</td>
+					<td>
+						<div class="contenedor">
+							<!-- style="margin-top:10px; margin-left:300px;" -->
+							<table width="500" bgcolor="white">
+
+								<tr>
+
+									<td><strong>Nombre</strong></td>
+
+									<td>Score</td>
+
+								</tr>
+								{% for elemento in result %}
+
+								<tr>
+
+									<td><a
+											href="/detalles/{{ elemento['_id'] }}">{{ elemento['_source']['nombre'] }}</a>
+									</td>
+
+									<td>{{ elemento['_score'] }}</td>
+
+								</tr>
+								{% endfor %}
+
+							</table>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+
+</html>

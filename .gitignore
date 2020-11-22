@@ -1,0 +1,6 @@
+*.json
+.vscode/
+Elastic/.vscode/
+vademecum/vademecum/__pycache__/
+vademecum/vademecum/.vscode/
+vademecum/vademecum/spiders/__pycache__/

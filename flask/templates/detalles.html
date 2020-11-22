@@ -1,0 +1,228 @@
+<html>
+
+<script> 
+function vermas(id){
+if(id=="mas"){
+document.getElementById("desplegar").style.display="block";   
+document.getElementById("mas").style.display="none"; 
+}
+else{
+document.getElementById("desplegar").style.display="none";
+document.getElementById("mas").style.display="inline";
+}
+}
+</script>
+
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Poppins:700" rel="stylesheet" />
+    <link type="text/css" href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='images/medicamentos.jpeg') }}" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="s012">
+      <form>
+        <fieldset>
+          <legend>Detalles del medicamento</legend>
+        </fieldset>
+        <p>
+        <input type="button" value="Volver" onClick="history.go(-1);">
+        </p>
+
+        <div class="inner-form">
+
+
+          <div class="main-form" id="main-form">
+          <form action="" method="post">
+          	<div id="div1">
+				<div class="contenedor">
+       			<table border="orange" bgcolor="white">
+
+						<tr>
+
+						  <td><strong>Nombre</strong></td>
+
+						  <td>{{result.nombre}}</td>
+
+						</tr>
+
+
+
+						<tr>
+
+						  <td><strong>Alertas por composicion</strong></td>
+
+						  <td>
+
+							<ul>
+
+							  {% for elemento in result.alertas_composicion %}    
+
+								<li>{{elemento}}</li>
+
+							  {% endfor %}
+
+							</ul>
+
+						  </td>
+
+						</tr>
+
+
+
+						<tr>
+
+						  <td><strong>Principio activo</strong></td>
+
+						  <td>
+
+							<ul>
+
+							  {% for elemento in result.principio_activo %}    
+
+								<li>{{elemento}}</li>
+
+							  {% endfor %}
+
+							</ul>
+
+						  </td>
+
+						</tr>
+
+
+
+						<tr>
+
+						  <td><strong>Envases</strong></td>
+
+						  <td>
+
+							<ul>
+
+							  {% for elemento in result.envases %}    
+
+								<li>{{elemento}}</li>
+
+							  {% endfor %}
+
+							</ul>
+
+						  </td>
+
+						</tr>
+
+
+
+						<tr>
+
+						  <td><strong>Definicion y uso</strong></td>
+
+						  <td>
+						  		<div>
+									<div class="parrafo">
+										{{result.definicion_uso}}
+									</div>
+								</div>
+						  		
+						</td>
+
+						</tr>
+
+
+
+						<tr>
+
+						  <td><strong>Antes de tomar</strong></td>
+
+						  <td>
+						  	
+						  	<div>
+									<div class="parrafo">
+										{{result.antes_tomar}}
+									</div>
+								</div>
+
+						  </td>
+
+						</tr>
+
+
+
+						<tr>
+
+						  <td><strong>Como tomar</strong></td>
+
+						  <td>{{result.como_tomar}}</td>
+
+						</tr>
+
+
+
+						<tr>
+
+						  <td><strong>Efectos adversos</strong></td>
+
+						  <td>{{result.efectos_adversos}}</td>
+
+						</tr>
+
+
+
+						<tr>
+
+						  <td><strong>Conservacion</strong></td>
+
+						  <td>{{result.conservacion}}</td>
+
+						</tr>
+
+
+
+						<tr>
+
+						  <td><strong>Informacion adicional</strong></td>
+
+						  <td>{{result.info_adicional}}</td>
+
+						</tr>
+
+
+
+						<tr>
+
+						  <td><strong>Enfermedades</strong></td>
+
+						  <td>
+
+							<ul>
+
+							  {% for elemento in result.enfermedades %}    
+
+								<li>{{elemento}}</li>
+
+							  {% endfor %}
+
+							</ul>
+
+						  </td>
+
+						</tr>
+
+
+
+						</table>
+					</div>
+					</div>
+
+            </form>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
